@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leadgram — Пароль удаления (для владельца) / O'chirish paroli (egasi uchun)</title>
+<style>
+  :root{--blue:#2563eb;--red:#ef4444;--amber:#f59e0b;--ink:#1e293b;--muted:#64748b;--line:#e2e8f0;--bg:#f1f5f9;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;padding:24px 14px 80px}
+  .wrap{max-width:620px;margin:0 auto}
+  .top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:space-between;
+       background:#fff;border-radius:18px;padding:18px 22px;box-shadow:0 4px 18px rgba(0,0,0,.06);margin-bottom:18px}
+  .logo{font-size:20px;font-weight:800;color:var(--blue)}
+  .lang{display:flex;gap:6px}
+  .lang button{border:2px solid var(--blue);background:#fff;color:var(--blue);font-weight:700;padding:7px 14px;border-radius:10px;cursor:pointer;font-size:14px}
+  .lang button.on{background:var(--blue);color:#fff}
+
+  .lock{background:#fff;border:2px solid #fecaca;border-radius:18px;padding:22px 24px;box-shadow:0 3px 14px rgba(0,0,0,.05)}
+  .banner{background:#fef2f2;border-left:4px solid var(--red);border-radius:10px;padding:12px 16px;margin-bottom:18px;color:#991b1b;font-weight:600;font-size:14px}
+  h1{font-size:20px;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:18px}
+
+  ol{list-style:none;counter-reset:s;margin:0 0 6px}
+  ol li{counter-increment:s;position:relative;padding:7px 0 11px 40px;font-size:15px}
+  ol li::before{content:counter(s);position:absolute;left:0;top:3px;width:26px;height:26px;
+       background:#fee2e2;color:var(--red);border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:13px}
+
+  .pwbox{margin:18px 0;padding:18px;border:2px dashed var(--red);border-radius:14px;background:#fff7f7;text-align:center}
+  .pwbox .lbl{font-size:13px;font-weight:700;color:#991b1b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+  .pwbox .val{font-family:'Courier New',monospace;font-size:26px;font-weight:800;color:var(--ink);
+       letter-spacing:2px;border-bottom:2px solid var(--red);display:inline-block;padding:4px 18px;min-width:200px}
+  .pwbox .hint{font-size:12px;color:var(--muted);margin-top:10px}
+
+  .tip{background:#fffbeb;border-left:4px solid var(--amber);padding:11px 15px;border-radius:8px;font-size:14px;color:#92400e;margin-top:14px}
+  .modal-demo{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+  .modal-demo .x{font-size:15px;font-weight:700;margin-bottom:10px;color:var(--red)}
+  .modal-demo input{width:80%;max-width:260px;padding:10px 14px;border:1.5px solid var(--line);border-radius:10px;font-size:18px;text-align:center;letter-spacing:4px}
+  .modal-demo .btns{display:flex;gap:10px;justify-content:center;margin-top:12px}
+  .btn{border:none;border-radius:10px;padding:9px 18px;font-weight:700;font-size:13px;cursor:default}
+  .btn.red{background:var(--red);color:#fff}.btn.g{background:#f1f5f9;color:var(--ink);border:1px solid var(--line)}
+
+  [data-uz]{display:none}
+  body.uz [data-ru]{display:none}
+  body.uz [data-uz]{display:inline}
+  @media print{body{background:#fff;padding:0}.top,.lock{box-shadow:none}.lang{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <div class="logo">🔒 LEADGRAM</div>
+    <div class="lang">
+      <button id="bru" class="on" onclick="setLang('ru')">RU</button>
+      <button id="buz" onclick="setLang('uz')">UZ</button>
+    </div>
+  </div>
+
+  <div class="lock">
+    <div class="banner">
+      <span data-ru>⚠️ Только для владельца и менеджеров. Не показывайте этот лист мойщикам — пароль защищает записи от случайного или несанкционированного удаления.</span>
+      <span data-uz>⚠️ Faqat egasi va menejerlar uchun. Bu varaqni yuvuvchilarga ko'rsatmang — parol yozuvlarni tasodifiy yoki ruxsatsiz o'chirishdan himoya qiladi.</span>
+    </div>
+
+    <h1>🗑️ <span data-ru>Удаление записи</span><span data-uz>Yozuvni o'chirish</span></h1>
+    <p class="sub" data-ru>Чтобы удалить запись, нужен пароль удаления. Он проверяется на сервере и един для всех устройств.</p>
+    <p class="sub" data-uz>Yozuvni o'chirish uchun o'chirish paroli kerak. U serverda tekshiriladi va barcha qurilmalar uchun bir xil.</p>
+
+    <ol>
+      <li><span data-ru>В разделе <b>🚗 Записи</b> у нужной строки нажмите <b>🗑️</b>.</span><span data-uz><b>🚗 Yozuvlar</b> bo'limida kerakli qatordagi <b>🗑️</b> tugmasini bosing.</span></li>
+      <li><span data-ru>Появится окно с полем для пароля — введите пароль.</span><span data-uz>Parol maydoni bilan oyna chiqadi — parolni kiriting.</span></li>
+      <li><span data-ru>Нажмите <b>Подтвердить</b>. Запись удалится на всех устройствах.</span><span data-uz><b>Tasdiqlash</b>ni bosing. Yozuv barcha qurilmalarda o'chadi.</span></li>
+    </ol>
+
+    <div class="modal-demo">
+      <div class="x" data-ru>Подтверждение удаления</div>
+      <div class="x" data-uz>O'chirishni tasdiqlash</div>
+      <input type="password" value="••••••••" readonly>
+      <div class="btns"><button class="btn g" data-ru>Отмена</button><button class="btn g" data-uz>Bekor</button><button class="btn red" data-ru>Удалить</button><button class="btn red" data-uz>O'chirish</button></div>
+    </div>
+
+    <div class="pwbox">
+      <div class="lbl" data-ru>🔑 Пароль удаления</div>
+      <div class="lbl" data-uz>🔑 O'chirish paroli</div>
+      <div class="val" contenteditable="true" spellcheck="false">_____________</div>
+      <div class="hint" data-ru>Впишите ваш пароль сюда (замените прочерк), затем сохраните/распечатайте.</div>
+      <div class="hint" data-uz>Parolingizni shu yerga yozing (chiziqni almashtiring), so'ng saqlang/chop eting.</div>
+    </div>
+
+    <div class="tip">
+      <span data-ru><b>Как сменить пароль:</b> в панели откройте <b>🔑 Роли → Пароль удаления</b>, введите новый и сохраните. Пароль <b>свой у каждого бизнеса</b> — он действует только в вашей мойке и не виден другим. После смены обновите этот лист.</span>
+      <span data-uz><b>Parolni qanday o'zgartirish:</b> panelda <b>🔑 Rollar → O'chirish paroli</b>ni oching, yangisini kiriting va saqlang. Parol <b>har bir biznesda alohida</b> — faqat sizning moykangizda amal qiladi. O'zgartirgach, bu varaqni yangilang.</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function setLang(l){
+    document.body.classList.toggle('uz', l==='uz');
+    document.getElementById('bru').classList.toggle('on', l==='ru');
+    document.getElementById('buz').classList.toggle('on', l==='uz');
+    document.documentElement.lang = l;
+  }
+</script>
+</body>
+</html>
